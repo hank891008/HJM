@@ -39,7 +39,7 @@ int calSYDL(int a[], int m[], int k) {
 int main() {
   int a[3] = {2, 3, 6};  // a[i]=n%m[i]
   int m[3] = {3, 5, 7};
-  cout << calSYDL(a, m, 3) << endl;  
+  cout << calSYDL(a, m, 3) << endl;
   //輸出為滿足兩條陣列的最小n,第3參數為陣列長度
   //所有滿足答案的數字集合為n+gcd(m0,m1,m2...)*k, k為正數
   return 0;
