@@ -2,7 +2,7 @@ struct Line {
   Pt st;
   Pt ed;
 };
-// return point side 
+// return point side
 // left, on line, right -> 1, 0, -1
 int side(Line l, Pt a) {
   dvt cross_val = cross(a - l.st, l.ed - l.st);
@@ -32,8 +32,8 @@ pair<int, Pt> intersection(Line a, Line b) {
   Pt C = b.st - a.st;
   dvt mom = cross(A, B);
   dvt son = cross(C, B);
-  if (fabs(mom) <= EPS) {
-    if (fabs(son) <= EPS) {
+  if (std::abs(mom) <= EPS) {
+    if (std::abs(son) <= EPS) {
       return {1, {}}; // same line
     } else {
       return {2, {}}; // parallel
@@ -41,4 +41,8 @@ pair<int, Pt> intersection(Line a, Line b) {
   } else {            // ok
     return {0, a.st + A * (son / mom)};
   }
+}
+// line to point distance
+dvt dis_lp(Line l, Pt a) {
+  return area3x2(l.st, l.ed, a) / dis_pp(l.st, l.ed);
 }

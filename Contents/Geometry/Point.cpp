@@ -26,11 +26,16 @@ Pt operator * (const Pt &a, const dvt c) {
 Pt operator / (const Pt &a, const dvt c) {
   return {a.x / c, a.y / c};
 }
-// |a| x |b| x cosθ
+// |a| x |b| x cos(x)
 dvt iproduct(const Pt &a, const Pt &b) {
   return a.x * b.x + a.y * b.y;
 }
-// |a| x |b| x sinθ
+// |a| x |b| x sin(x)
 dvt cross(const Pt &a, const Pt &b) {
   return a.x * b.y - a.y * b.x;
+}
+dvt dis_pp(const Pt &a, const Pt, &b) {
+  dvt dx = a.x - b.x;
+  dvt dy = a.y - b.y;
+  return sqrt(dx * dx, dy * dy);
 }
