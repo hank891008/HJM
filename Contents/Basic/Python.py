@@ -18,7 +18,7 @@ math.log(x, base)
 math.log2(x)#2為底
 math.log10(x)#10為底
 math.sqrt(x)
-math,pow(x, y, mod)#精確些(float型態) MOD!!!
+math.pow(x, y, mod)#精確些(float型態) MOD!!!
 math.sin(x)# cos tan asin acos atan atan2(弧度) sinh cosh tanh acosh asinh atanh
 math.hypot(x, y)#歐幾里德範數
 math.degrees(x)#x從弧度轉角度

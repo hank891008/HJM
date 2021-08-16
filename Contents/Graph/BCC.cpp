@@ -6,6 +6,8 @@ vector<PII> BCC[MXV];
 int bcc_cnt = 0;
 stack<PII> st;
 
+vector<pair<int, int>> my_cut_edge;
+
 void dfs(int now, int cur_depth, int f) {
   visit[now] = true;
   depth[now] = low[now] = cur_depth;
@@ -13,7 +15,7 @@ void dfs(int now, int cur_depth, int f) {
   for (auto i : G[now]) {
     if (i == f) continue;
     if (visit[i]) {  // ancestor
-      if (depth[i] < depth[now]) {
+      if (depth[i] < depth[now]) { // #
         low[now] = min(low[now], depth[i]);
         st.push({now, i});
       }
@@ -34,9 +36,18 @@ void dfs(int now, int cur_depth, int f) {
         BCC[bcc_cnt].push_back(t);
         ++bcc_cnt;
       }
+      // ###
+      if (low[i] > depth[now])
+        my_cut_edge.push_bach({now, i});
     }
   }
   if (cur_depth == 0) 
     is_cut_vertex[now] = (cut_son != 1);
   return;
+}
+
+bool is_2_edge_connected(int n) {
+  memset(visit, 0, sizeof(visit));
+  dfs(1, 0, -1);
+  return my_cut_edge.size() == 0;
 }
