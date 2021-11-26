@@ -1,0 +1,22 @@
+ \begin{itemize}
+    \item 歐拉函數計算對於一個整數 N，小於等於 N 的正整數中，有幾個和 N 互質
+    \item 如果 $gcd(p, q) = 1, \Phi(p) \cdot \Phi(q) = \Phi(p \cdot q)$
+    \item $\Phi(p^k) = p^{k - 1} \times (p - 1)$
+\end{itemize}
+
+\begin{lstlisting}
+void phi_table(int n) {
+  phi[1] = 1;
+  for (int i = 2; i <= n; i++) {
+    if (phi[i]) {
+      continue;
+    }
+    for (int j = i; j < n; j += i) {
+      if (!phi[j]) {
+        phi[j] = j;
+      }
+      phi[j] = phi[j] / i * (i - 1);
+    }
+  }
+}
+\end{lstlisting}

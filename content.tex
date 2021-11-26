@@ -69,13 +69,8 @@
         \lstinputlisting{Contents/Math/Gaussian_Elimination.cpp}
     \subsection{Prime Table}
         \lstinputlisting{Contents/Math/Prime_Table.cpp}
-    \subsection{Phi Table}
-        \begin{itemize}
-            \item 歐拉函數計算對於一個整數 N，小於等於 N 的正整數中，有幾個和 N 互質
-            \item 如果 $gcd(p, q) = 1, \Phi(p) \cdot \Phi(q) = \Phi(p \cdot q)$
-            \item $\Phi(p^k) = p^{k - 1} \times (p - 1)$
-        \end{itemize}
-        \lstinputlisting{Contents/Math/Phi_Table.cpp}
+    \subsection{Phi}
+        \input{Contents/Math/Phi.tex}
     \subsection{Chinese Remainder Thm}
         \lstinputlisting{Contents/Math/CRT.cpp}
     \subsection{Josephus}
@@ -87,8 +82,7 @@
     \subsection{Point}
         \lstinputlisting{Contents/Geometry/Point.cpp}
     \subsection{Line}
-        \lstinputlisting{Contents/Geometry/Line.cpp}
-        \[d(P, L) = \frac{|ax_0 + by_0 + c|}{\sqrt[]{a^2 + b^2}}\]
+        \input{Contents/Geometry/Line.tex}
     \subsection{Area}
         \lstinputlisting{Contents/Geometry/Area.cpp}
     \subsection{Convex Hull}

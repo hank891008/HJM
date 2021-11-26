@@ -1,3 +1,6 @@
+\[d(P, L) = \frac{|ax_0 + by_0 + c|}{\sqrt[]{a^2 + b^2}}\]
+
+\begin{lstlisting}
 struct Line {
   Pt st;
   Pt ed;
@@ -46,3 +49,4 @@ pair<int, Pt> intersection(Line a, Line b) {
 dvt dis_lp(Line l, Pt a) {
   return area3x2(l.st, l.ed, a) / dis_pp(l.st, l.ed);
 }
+\end{lstlisting}
