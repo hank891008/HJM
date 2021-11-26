@@ -18,3 +18,16 @@ Matrix operator * (Matrix &a, Matrix &b) {
   }
   return ret;
 }
+Matrix mPow(Matrix a, int n) {
+  assert(a.row == a.col);
+  Matrix ret(a.row, a.col);
+  ret.v[0][0] = ret.v[1][1] = 1;
+  while (n > 0) {
+    if (n & 1) {
+      ret = ret * a;
+    }
+    a = a * a;
+    n >>= 1;
+  }
+  return ret;
+}

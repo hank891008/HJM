@@ -1,0 +1,33 @@
+$$f(n)=f(n-1)+f(n-2)$$
+
+\begin{equation*}
+    \begin{bmatrix}
+        f(n) \\
+        f(n - 1)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1 & 1 \\
+        1 & 0
+    \end{bmatrix}^{(n - 1)}
+    \begin{bmatrix}
+        1 \\
+        0
+    \end{bmatrix}
+\end{equation*}
+
+$$O(logn)$$
+
+\begin{lstlisting}
+LL fib(int n) {
+  if (n <= 1) {
+    return n;
+  }
+  Matrix a(2, 2), b(2, 1);
+  a.v[0][0] = a.v[0][1] = a.v[1][0] = 1;
+  b.v[0][0] = 1;
+  auto t = mPow(a, n - 1);
+  t = t * b;
+  return t.v[0][0];
+}
+\end{lstlisting}
