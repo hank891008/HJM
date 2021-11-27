@@ -2,19 +2,21 @@
 
 \begin{itemize}
     \item 判斷法
-    無向圖部分，將點分成奇點（度數為奇數）和偶點（度數為偶數）。
+    \item 無向圖部分，將點分成奇點（度數為奇數）和偶點（度數為偶數）。
     \begin{itemize}
         \item Euler path：奇點數為 0 或 2
         \item Euler circuit：沒有奇點
     \end{itemize}
-    有向圖部分，將點分成出點（出度 - 入度 = 1）和入點（入度 - 出度 = 1）還有平衡點（出度 = 入度）。
+    \item 有向圖部分，將點分成出點（出度 - 入度 = 1）和入點（入度 - 出度 = 1）還有平衡點（出度 = 入度）。
     \begin{itemize}
         \item Euler path：出點和入點個數同時為 0 或 1。
         \item Euler circuit：只有平衡點。
     \end{itemize}
     \item 求出一組解
-    用 DFS 遍歷整張圖，設 S 為離開的順序，無向圖的答案為 S ，有向圖的答案為反向的 S 。
-    DFS 起點選定：
-    \item Euler path：無向圖選擇任意一個奇點，有向圖選擇出點。
-    \item Euler circuit：任意一點。
+    \item 用 DFS 遍歷整張圖，設 S 為離開的順序，無向圖的答案為 S ，有向圖的答案為反向的 S 。
+    \item DFS 起點選定：
+    \begin{itemize}
+        \item Euler path：無向圖選擇任意一個奇點，有向圖選擇出點。
+        \item Euler circuit：任意一點。
+    \end{itemize}
 \end{itemize}
