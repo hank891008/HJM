@@ -67,7 +67,7 @@ struct SegmentTree {
       return query(T->rc, mid + 1, r, ql, qr);
     } else {
       return max(query(T->lc, l, mid, ql, mid),
-                query(T->rc, mid + 1, r, mid + 1, qr));
+          query(T->rc, mid + 1, r, mid + 1, qr));
     }
   }
 };
