@@ -20,3 +20,180 @@
         \item Euler circuit：任意一點。
     \end{itemize}
 \end{itemize}
+
+Code from Eric
+
+\begin{lstlisting}
+#define ll long long
+#define PB push_back
+#define EB emplace_back
+#define PII pair<int, int>
+#define MP make_pair
+#define all(x) x.begin(), x.end()
+#define maxn 50000+5
+  
+//structure
+struct Eular {
+  vector<PII> adj[maxn];
+  vector<bool> edges;
+  vector<PII> path;
+  int chk[maxn];
+  int n;
+
+  void init(int _n) {
+    n = _n;
+    for (int i = 0; i <= n; i++) adj[i].clear();
+    edges.clear();
+    path.clear();
+    memset(chk, 0, sizeof(chk));
+  }
+
+  void dfs(int v) {
+    for (auto i : adj[v]) {
+      if (edges[i.first] == true) {
+        edges[i.first] = false;
+        dfs(i.second);
+        path.EB(MP(i.second, v));
+      }
+    }
+  }
+
+  void add_Edge(int from, int to) {
+    edges.PB(true);
+
+    // for bi-directed graph
+    adj[from].PB(MP(edges.size() - 1, to));
+    adj[to].PB(MP(edges.size() - 1, from));
+    chk[from]++;
+    chk[to]++;
+
+    // for directed graph
+    // adj[from].PB(MP(edges.size()-1, to));
+    // check[from]++;
+  }
+
+  bool eular_path() {
+    int st = -1;
+    for (int i = 1; i <= n; i++) {
+      if (chk[i] % 2 == 1) {
+        st = i;
+        break;
+      }
+    }
+    if (st == -1) {
+      return false;
+    }
+    dfs(st);
+    return true;
+  }
+
+  void print_path(void) {
+    for (auto i : path) {
+      printf("%d %d\n", i.first, i.second);
+    }
+  }
+};
+\end{lstlisting}
+
+Code from allen(lexicographic order)
+
+\begin{lstlisting}
+#include <bits/stdc++.h>
+using namespace std;
+const int ALP = 30;
+const int MXN = 1005;
+int n;
+int din[ALP], dout[ALP];
+int par[ALP];
+vector<string> vs[MXN], ans;
+bitset<MXN> vis, used[ALP];
+
+void djsInit() {
+  for (int i = 0; i != ALP; ++i) {
+    par[i] = i;
+  }
+}
+
+int Find(int x) { return (x == par[x] ? (x) : (par[x] = Find(par[x]))); }
+
+void init() {
+  djsInit();
+  memset(din, 0, sizeof(din));
+  memset(dout, 0, sizeof(dout));
+  vis.reset();
+  for (int i = 0; i != ALP; ++i) {
+    vs[i].clear();
+    used[i].reset();
+  }
+  return;
+}
+
+void dfs(int u) {
+  for (int i = 0; i != (int)vs[u].size(); ++i) {
+    if (used[u][i]) {
+      continue;
+    }
+    used[u][i] = 1;
+    string s = vs[u][i];
+    int v = s[s.size() - 1] - 'a';
+    dfs(v);
+    ans.push_back(s);
+  }
+}
+
+bool solve() {
+  int cnt = 1;
+  for (int i = 0; i != n; ++i) {
+    string s;
+    cin >> s;
+    int from = s[0] - 'a', to = s.back() - 'a';
+    ++din[to];
+    ++dout[from];
+    vs[from].push_back(s);
+    vis[from] = vis[to] = true;
+    if ((from = Find(from)) != (to = Find(to))) {
+      par[from] = to;
+      ++cnt;
+    }
+  }
+  if ((int)vis.count() != cnt) {
+    return false;
+  }
+  int root, st, pin = 0, pout = 0;
+  for (int i = ALP - 1; i >= 0; --i) {
+    sort(vs[i].begin(), vs[i].end());
+    if (vs[i].size()) root = i;
+    int d = dout[i] - din[i];
+    if (d == 1) {
+      ++pout;
+      st = i;
+    } else if (d == -1) {
+      ++pin;
+    } else if (d != 0) {
+      return false;
+    }
+  }
+  if (pin != pout || pin > 1) {
+    return false;
+  }
+  ans.clear();
+  dfs((pin ? st : root));
+  return true;
+}
+
+int main() {
+  int t;
+  cin >> t;
+  while (t--) {
+    cin >> n;
+    init();
+    if (!solve()) {
+      cout << "***\n";
+      continue;
+    }
+    for (int i = ans.size() - 1; i >= 0; --i) {
+      cout << ans[i] << ".\n"[i == 0];
+    }
+  }
+}
+\end{lstlisting}
