@@ -32,7 +32,8 @@ int calSYDL(int a[], int m[], int k) {
     result += N[j] * a[j];
   }
   return (result % mm + mm) % mm;
-  //落在(0, mm)之间，这么写是为了防止result初始为负数，本例中不可能为负可以直接
+  //落在(0, mm)之间，这么写是为了防止result初始为负数
+  //本例中不可能为负可以直接
   //写成：return result%mm;即可。
 }
 
