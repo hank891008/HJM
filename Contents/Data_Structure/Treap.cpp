@@ -9,9 +9,7 @@ struct Treap {
     lc = rc = NULL;
   }
 };
-
 int getSize(Treap *a) { return (a == NULL ? 0 : a->sz); }
-
 void split(Treap *t, Treap *&a, Treap *&b, int k) {
   if (t == NULL) {
     a = b = NULL;
@@ -25,7 +23,6 @@ void split(Treap *t, Treap *&a, Treap *&b, int k) {
     split(t->lc, a, b->lc, k);
   }
 }
-
 Treap *merge(Treap *a, Treap *b) {
   if (!a || !b) {
     return (a ? a : b);
@@ -38,13 +35,11 @@ Treap *merge(Treap *a, Treap *b) {
     return b;
   }
 }
-
 void Insert(Treap *&t, int x, int p) {
   Treap *a, *b;
   split(t, a, b, x);
   t = merge(a, merge(new Treap(p), b));
 }
-
 void Delete(Treap *&t, int x) {
   Treap *a, *b, *c;
   split(t, b, c, x);
