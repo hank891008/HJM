@@ -1,7 +1,7 @@
-# H2J
+# HJM
 
 [![codebook](https://github.com/HJackH/H2J/actions/workflows/build.yml/badge.svg)](https://github.com/HJackH/H2J/actions/workflows/build.yml)
 
-a codebook used by team H2J
+a codebook used by team HJM
 
-**[codebook](https://github.com/HJackH/H2J/blob/pdf/codebook.pdf)**
+**[codebook](https://github.com/hank891008/HJM/blob/pdf/codebook.pdf)**
